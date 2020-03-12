@@ -27,6 +27,44 @@ module "this" {
 No issue is creating limit on this module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Providers
+
+| Name | Version |
+|------|---------|
+| digitalocean | n/a |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:-----:|
+| bastion\_enabled | Boolean to enable a bastion host.  All ssh traffic restricted to bastion | `bool` | `false` | no |
+| bastion\_sg\_name | Name for the bastion security group | `string` | `"bastion-sg"` | no |
+| consul\_enabled | Boolean to allow consul traffic | `bool` | `false` | no |
+| consul\_sg\_name | Name for the consult security group | `string` | `"consul-sg"` | no |
+| corporate\_ip | The corporate IP you want to restrict ssh traffic to | `string` | `""` | no |
+| create\_internal\_domain | Boolean to create an internal split horizon DNS | `bool` | `false` | no |
+| create\_public\_regional\_subdomain | Boolean to create regional subdomain - ie us-east-1.example.com | `bool` | `false` | no |
+| environment | The environment | `string` | `""` | no |
+| hids\_enabled | Boolean to enable intrusion detection systems traffic | `bool` | `false` | no |
+| hids\_sg\_name | Name for the HIDS security group | `string` | `"hids-sg"` | no |
+| internal\_tld | The top level domain for the internal DNS | `string` | `"internal"` | no |
+| logging\_enabled | Boolean to allow logging related traffic | `bool` | `false` | no |
+| logging\_sg\_name | Name for the logging security group | `string` | `"logging-sg"` | no |
+| monitoring\_enabled | Boolean to for prometheus related traffic | `bool` | `false` | no |
+| monitoring\_sg\_name | Name for the monitoring security group | `string` | `"monitoring-sg"` | no |
+| namespace | The namespace to deploy into | `string` | `""` | no |
+| network\_name | The network name, ie kusama / mainnet | `string` | `""` | no |
+| owner | n/a | `string` | `""` | no |
+| root\_domain\_name | The public domain | `string` | `""` | no |
+| sentry\_node\_sg\_name | Name for the public node security group | `string` | `"sentry-sg"` | no |
+| stage | The stage of the deployment | `string` | `""` | no |
+| vault\_enabled | Boolean to allow vault related traffic | `bool` | `false` | no |
+| vault\_sg\_name | Name for the vault security group | `string` | `"vault-sg"` | no |
+| zone\_id | The zone ID to configure as the root zoon - ie subdomain.example.com's zone ID | `string` | `""` | no |
+
+## Outputs
+
+No output.
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
