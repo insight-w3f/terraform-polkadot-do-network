@@ -64,7 +64,18 @@ No issue is creating limit on this module.
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| bastion\_security\_group\_id | UID of the service account for the bastion host |
+| consul\_security\_group\_id | UID of the service account for the Consul servers |
+| hids\_security\_group\_id | UID of the service account for the HIDS group |
+| internal\_tld | The name of the internal domain |
+| logging\_security\_group\_id | UID of the service account for the logging group |
+| monitoring\_security\_group\_id | UID of the service account for the monitoring group |
+| public\_regional\_domain | The public regional domain |
+| root\_domain\_name | The name of the root domain |
+| sentry\_security\_group\_id | UID of the service account for the sentry group |
+| vault\_security\_group\_id | UID of the service account for the vault group |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
