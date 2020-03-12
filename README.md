@@ -90,7 +90,7 @@ To run them:
 
 ## Authors
 
-Module managed by [Richard Mah](github.com/shinyfoil)
+Module managed by [Richard Mah](https://github.com/shinyfoil)
 
 ## Credits
 
