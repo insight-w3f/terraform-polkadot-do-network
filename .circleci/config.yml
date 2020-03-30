@@ -22,27 +22,13 @@ jobs:
             chmod +x ./cloud-nuke
             ./cloud-nuke aws --force
           when: on_fail
-  release:
-    executor: node/default
-    steps:
-      - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install @semantic-release/changelog -D
-            - run: npm install @semantic-release/git -D
-      - run: npx semantic-release
 orbs:
   go: circleci/go@0.2.0
   node: circleci/node@1.1.6
 version: 2.1
 workflows:
+  version: 2
   default:
     jobs:
-      - test
-      - release:
-          filters:
-            branches:
-              only: master
-          requires:
-            - test
-  version: 2
+      - test:
+          context: do-ci-1
