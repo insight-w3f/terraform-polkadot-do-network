@@ -63,6 +63,12 @@ variable "zone_id" {
   default     = ""
 }
 
+variable "region" {
+  description = "The region to deploy into"
+  type = string
+  default = "NYC1"
+}
+
 ##################
 # Security Groups
 ##################
