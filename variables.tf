@@ -65,8 +65,8 @@ variable "zone_id" {
 
 variable "region" {
   description = "The region to deploy into"
-  type = string
-  default = "NYC1"
+  type        = string
+  default     = "NYC1"
 }
 
 ##################
@@ -121,8 +121,8 @@ variable "sentry_node_sg_name" {
 
 variable "sentry_node_instances" {
   description = "List of droplet IDs to include in this security group"
-  type = string
-  default = [""]
+  type        = list(string)
+  default     = [""]
 }
 
 variable "bastion_sg_name" {
@@ -133,8 +133,8 @@ variable "bastion_sg_name" {
 
 variable "bastion_instances" {
   description = "List of droplet IDs to include in this security group"
-  type = string
-  default = [""]
+  type        = list(string)
+  default     = [""]
 }
 
 variable "consul_sg_name" {
@@ -145,8 +145,8 @@ variable "consul_sg_name" {
 
 variable "consul_instances" {
   description = "List of droplet IDs to include in this security group"
-  type = string
-  default = [""]
+  type        = list(string)
+  default     = [""]
 }
 
 variable "monitoring_sg_name" {
@@ -157,8 +157,8 @@ variable "monitoring_sg_name" {
 
 variable "monitoring_instances" {
   description = "List of droplet IDs to include in this security group"
-  type = string
-  default = [""]
+  type        = list(string)
+  default     = [""]
 }
 
 variable "hids_sg_name" {
@@ -169,8 +169,8 @@ variable "hids_sg_name" {
 
 variable "hids_instances" {
   description = "List of droplet IDs to include in this security group"
-  type = string
-  default = [""]
+  type        = list(string)
+  default     = [""]
 }
 
 variable "logging_sg_name" {
@@ -181,8 +181,8 @@ variable "logging_sg_name" {
 
 variable "logging_instances" {
   description = "List of droplet IDs to include in this security group"
-  type = string
-  default = [""]
+  type        = list(string)
+  default     = [""]
 }
 
 variable "vault_sg_name" {
@@ -193,6 +193,6 @@ variable "vault_sg_name" {
 
 variable "vault_instances" {
   description = "List of droplet IDs to include in this security group"
-  type = string
-  default = [""]
+  type        = list(string)
+  default     = [""]
 }
