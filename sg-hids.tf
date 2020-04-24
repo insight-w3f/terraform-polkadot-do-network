@@ -8,6 +8,8 @@ resource "digitalocean_firewall" "hids_sg_ssh" {
   tags  = [digitalocean_tag.hids_sg[*].id]
   count = var.hids_enabled ? 1 : 0
 
+  droplet_ids = var.hids_instances
+
   inbound_rule {
     protocol         = "tcp"
     port_range       = "22"
@@ -19,6 +21,8 @@ resource "digitalocean_firewall" "hids_sg_mon_prom" {
   name  = "${var.hids_sg_name}-monitoring"
   tags  = [digitalocean_tag.hids_sg[*].id]
   count = var.hids_enabled && var.monitoring_enabled ? 1 : 0
+
+  droplet_ids = var.hids_instances
 
   inbound_rule {
     protocol    = "tcp"
@@ -32,6 +36,8 @@ resource "digitalocean_firewall" "hids_sg_mon_nordstrom" {
   tags  = [digitalocean_tag.hids_sg[*].id]
   count = var.hids_enabled && ! var.monitoring_enabled ? 1 : 0
 
+  droplet_ids = var.hids_instances
+
   inbound_rule {
     protocol    = "tcp"
     port_range  = "9108"
@@ -44,6 +50,8 @@ resource "digitalocean_firewall" "hids_sg_http_ingress" {
   tags  = [digitalocean_tag.hids_sg[*].id]
   count = var.hids_enabled ? 1 : 0
 
+  droplet_ids = var.hids_instances
+
   inbound_rule {
     protocol   = "tcp"
     port_range = "80"
@@ -54,6 +62,8 @@ resource "digitalocean_firewall" "hids_sg_consul" {
   name  = "${var.hids_sg_name}-consul"
   tags  = [digitalocean_tag.hids_sg[*].id]
   count = var.hids_enabled && var.consul_enabled ? 1 : 0
+
+  droplet_ids = var.hids_instances
 
   inbound_rule {
     protocol    = "tcp"

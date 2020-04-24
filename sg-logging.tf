@@ -8,6 +8,8 @@ resource "digitalocean_firewall" "logging_sg_ssh" {
   tags  = [digitalocean_tag.logging_sg[*].id]
   count = var.logging_enabled && ! var.bastion_enabled ? 1 : 0
 
+  droplet_ids = var.logging_instances
+
   inbound_rule {
     protocol         = "tcp"
     port_range       = "22"
@@ -19,6 +21,8 @@ resource "digitalocean_firewall" "logging_sg_bastion_ssh" {
   name  = "${var.logging_sg_name}-ssh"
   tags  = [digitalocean_tag.logging_sg[*].id]
   count = var.logging_enabled && var.bastion_enabled ? 1 : 0
+
+  droplet_ids = var.logging_instances
 
   inbound_rule {
     protocol    = "tcp"
@@ -32,6 +36,8 @@ resource "digitalocean_firewall" "logging_sg_mon_prom" {
   tags  = [digitalocean_tag.logging_sg[*].id]
   count = var.logging_enabled && var.monitoring_enabled ? 1 : 0
 
+  droplet_ids = var.logging_instances
+
   inbound_rule {
     protocol    = "tcp"
     port_range  = "9100"
@@ -43,6 +49,8 @@ resource "digitalocean_firewall" "logging_sg_mon_nordstrom" {
   name  = "${var.logging_sg_name}-monitoring"
   tags  = [digitalocean_tag.logging_sg[*].id]
   count = var.logging_enabled && ! var.monitoring_enabled ? 1 : 0
+
+  droplet_ids = var.logging_instances
 
   inbound_rule {
     protocol    = "tcp"
@@ -56,6 +64,8 @@ resource "digitalocean_firewall" "logging_sg_http_ingress" {
   tags  = [digitalocean_tag.logging_sg[*].id]
   count = var.logging_enabled ? 1 : 0
 
+  droplet_ids = var.logging_instances
+
   inbound_rule {
     protocol   = "tcp"
     port_range = "80"
@@ -66,6 +76,8 @@ resource "digitalocean_firewall" "logging_sg_consul" {
   name  = "${var.logging_sg_name}-consul"
   tags  = [digitalocean_tag.logging_sg[*].id]
   count = var.logging_enabled && var.consul_enabled ? 1 : 0
+
+  droplet_ids = var.logging_instances
 
   inbound_rule {
     protocol    = "tcp"

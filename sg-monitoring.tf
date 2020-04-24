@@ -8,6 +8,8 @@ resource "digitalocean_firewall" "monitoring_sg_ssh" {
   tags  = [digitalocean_tag.monitoring_sg[*].id]
   count = var.monitoring_enabled && ! var.bastion_enabled ? 1 : 0
 
+  droplet_ids = var.monitoring_instances
+
   inbound_rule {
     protocol         = "tcp"
     port_range       = "22"
@@ -19,6 +21,8 @@ resource "digitalocean_firewall" "monitoring_sg_bastion_ssh" {
   name  = "${var.monitoring_sg_name}-ssh"
   tags  = [digitalocean_tag.monitoring_sg[*].id]
   count = var.monitoring_enabled && var.bastion_enabled ? 1 : 0
+
+  droplet_ids = var.monitoring_instances
 
   inbound_rule {
     protocol    = "tcp"
@@ -42,6 +46,8 @@ resource "digitalocean_firewall" "monitoring_sg_consul" {
   name  = "${var.monitoring_sg_name}-consul"
   tags  = [digitalocean_tag.monitoring_sg[*].id]
   count = var.monitoring_enabled && var.consul_enabled ? 1 : 0
+
+  droplet_ids = var.monitoring_instances
 
   inbound_rule {
     protocol    = "tcp"

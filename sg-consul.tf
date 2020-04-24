@@ -8,6 +8,8 @@ resource "digitalocean_firewall" "consul_sg_bastion_ssh" {
   tags  = [digitalocean_tag.consul_sg[*].id]
   count = var.consul_enabled && var.bastion_enabled ? 1 : 0
 
+  droplet_ids = var.consul_instances
+
   inbound_rule {
     protocol    = "tcp"
     port_range  = "22"
@@ -19,6 +21,8 @@ resource "digitalocean_firewall" "consul_sg_ssh" {
   name  = "${var.consul_sg_name}-ssh"
   tags  = [digitalocean_tag.consul_sg[*].id]
   count = var.consul_enabled && ! var.bastion_enabled ? 1 : 0
+
+  droplet_ids = var.consul_instances
 
   inbound_rule {
     protocol         = "tcp"
@@ -32,6 +36,8 @@ resource "digitalocean_firewall" "consul_sg_mon_prom" {
   tags  = [digitalocean_tag.consul_sg[*].id]
   count = var.consul_enabled && var.monitoring_enabled ? 1 : 0
 
+  droplet_ids = var.consul_instances
+
   inbound_rule {
     protocol    = "tcp"
     port_range  = "9100"
@@ -43,6 +49,8 @@ resource "digitalocean_firewall" "consul_sg_mon_nordstrom" {
   name  = "${var.consul_sg_name}-monitoring"
   tags  = [digitalocean_tag.consul_sg[*].id]
   count = var.consul_enabled && ! var.monitoring_enabled ? 1 : 0
+
+  droplet_ids = var.consul_instances
 
   inbound_rule {
     protocol    = "tcp"

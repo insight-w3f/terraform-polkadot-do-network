@@ -8,6 +8,8 @@ resource "digitalocean_firewall" "vault_sg_ssh" {
   tags  = [digitalocean_tag.vault_sg[*].id]
   count = var.vault_enabled && ! var.bastion_enabled ? 1 : 0
 
+  droplet_ids = var.vault_instances
+
   inbound_rule {
     protocol         = "tcp"
     port_range       = "22"
@@ -20,6 +22,8 @@ resource "digitalocean_firewall" "vault_sg_bastion_ssh" {
   tags  = [digitalocean_tag.vault_sg[*].id]
   count = var.vault_enabled && var.bastion_enabled ? 1 : 0
 
+  droplet_ids = var.vault_instances
+
   inbound_rule {
     protocol    = "tcp"
     port_range  = "22"
@@ -31,6 +35,8 @@ resource "digitalocean_firewall" "vault_sg_mon" {
   name  = "${var.vault_sg_name}-monitoring"
   tags  = [digitalocean_tag.vault_sg[*].id]
   count = var.vault_enabled && var.monitoring_enabled ? 1 : 0
+
+  droplet_ids = var.vault_instances
 
   inbound_rule {
     protocol    = "tcp"
@@ -49,6 +55,8 @@ resource "digitalocean_firewall" "vault_sg_consul" {
   name  = "${var.vault_sg_name}-consul"
   tags  = [digitalocean_tag.vault_sg[*].id]
   count = var.vault_enabled && var.consul_enabled ? 1 : 0
+
+  droplet_ids = var.vault_instances
 
   inbound_rule {
     protocol    = "tcp"
@@ -91,6 +99,8 @@ resource "digitalocean_firewall" "vault_sg_various" {
   name  = "${var.vault_sg_name}-various"
   tags  = [digitalocean_tag.vault_sg[*].id]
   count = var.vault_enabled ? 1 : 0
+
+  droplet_ids = var.vault_instances
 
   inbound_rule {
     protocol   = "tcp"
