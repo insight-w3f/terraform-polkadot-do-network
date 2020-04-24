@@ -119,10 +119,22 @@ variable "sentry_node_sg_name" {
   default     = "sentry-sg"
 }
 
+variable "sentry_node_instances" {
+  description = "List of droplet IDs to include in this security group"
+  type = string
+  default = [""]
+}
+
 variable "bastion_sg_name" {
   description = "Name for the bastion security group"
   type        = string
   default     = "bastion-sg"
+}
+
+variable "bastion_instances" {
+  description = "List of droplet IDs to include in this security group"
+  type = string
+  default = [""]
 }
 
 variable "consul_sg_name" {
@@ -131,10 +143,22 @@ variable "consul_sg_name" {
   default     = "consul-sg"
 }
 
+variable "consul_instances" {
+  description = "List of droplet IDs to include in this security group"
+  type = string
+  default = [""]
+}
+
 variable "monitoring_sg_name" {
   description = "Name for the monitoring security group"
   type        = string
   default     = "monitoring-sg"
+}
+
+variable "monitoring_instances" {
+  description = "List of droplet IDs to include in this security group"
+  type = string
+  default = [""]
 }
 
 variable "hids_sg_name" {
@@ -143,14 +167,32 @@ variable "hids_sg_name" {
   default     = "hids-sg"
 }
 
+variable "hids_instances" {
+  description = "List of droplet IDs to include in this security group"
+  type = string
+  default = [""]
+}
+
 variable "logging_sg_name" {
   description = "Name for the logging security group"
   type        = string
   default     = "logging-sg"
 }
 
+variable "logging_instances" {
+  description = "List of droplet IDs to include in this security group"
+  type = string
+  default = [""]
+}
+
 variable "vault_sg_name" {
   description = "Name for the vault security group"
   type        = string
   default     = "vault-sg"
+}
+
+variable "vault_instances" {
+  description = "List of droplet IDs to include in this security group"
+  type = string
+  default = [""]
 }

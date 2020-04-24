@@ -8,6 +8,8 @@ resource "digitalocean_firewall" "sentry_node_sg_ssh" {
   tags  = digitalocean_tag.sentry_node_sg[*].id
   count = ! var.bastion_enabled ? 1 : 0
 
+  droplet_ids = var.sentry_node_instances
+
   inbound_rule {
     protocol         = "tcp"
     port_range       = "22"
@@ -20,6 +22,8 @@ resource "digitalocean_firewall" "sentry_node_sg_bastion_ssh" {
   tags  = digitalocean_tag.sentry_node_sg[*].id
   count = var.bastion_enabled ? 1 : 0
 
+  droplet_ids = var.sentry_node_instances
+
   inbound_rule {
     protocol    = "tcp"
     port_range  = "22"
@@ -31,6 +35,8 @@ resource "digitalocean_firewall" "sentry_node_sg_mon" {
   name  = "${var.sentry_node_sg_name}-monitoring"
   tags  = digitalocean_tag.sentry_node_sg[*].id
   count = var.monitoring_enabled ? 1 : 0
+
+  droplet_ids = var.sentry_node_instances
 
   inbound_rule {
     protocol    = "tcp"
@@ -51,6 +57,8 @@ resource "digitalocean_firewall" "sentry_node_sg_hids" {
   tags  = digitalocean_tag.sentry_node_sg[*].id
   count = var.hids_enabled ? 1 : 0
 
+  droplet_ids = var.sentry_node_instances
+
   inbound_rule {
     protocol    = "tcp"
     port_range  = "1514"
@@ -68,6 +76,8 @@ resource "digitalocean_firewall" "sentry_node_sg_consul" {
   name  = "${var.sentry_node_sg_name}-consul"
   tags  = digitalocean_tag.sentry_node_sg[*].id
   count = var.consul_enabled ? 1 : 0
+
+  droplet_ids = var.sentry_node_instances
 
   inbound_rule {
     protocol    = "tcp"
@@ -110,6 +120,8 @@ resource "digitalocean_firewall" "sentry_node_sg_p2p" {
   name  = "${var.sentry_node_sg_name}-p2p"
   tags  = digitalocean_tag.sentry_node_sg[*].id
   count = true ? 1 : 0
+
+  droplet_ids = var.sentry_node_instances
 
   inbound_rule {
     protocol         = "tcp"
