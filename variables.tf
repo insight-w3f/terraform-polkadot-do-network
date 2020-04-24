@@ -122,7 +122,7 @@ variable "sentry_node_sg_name" {
 variable "sentry_node_instances" {
   description = "List of droplet IDs to include in this security group"
   type        = list(string)
-  default     = [""]
+  default     = []
 }
 
 variable "bastion_sg_name" {
@@ -134,7 +134,7 @@ variable "bastion_sg_name" {
 variable "bastion_instances" {
   description = "List of droplet IDs to include in this security group"
   type        = list(string)
-  default     = [""]
+  default     = []
 }
 
 variable "consul_sg_name" {
@@ -146,7 +146,7 @@ variable "consul_sg_name" {
 variable "consul_instances" {
   description = "List of droplet IDs to include in this security group"
   type        = list(string)
-  default     = [""]
+  default     = []
 }
 
 variable "monitoring_sg_name" {
@@ -158,7 +158,7 @@ variable "monitoring_sg_name" {
 variable "monitoring_instances" {
   description = "List of droplet IDs to include in this security group"
   type        = list(string)
-  default     = [""]
+  default     = []
 }
 
 variable "hids_sg_name" {
@@ -170,7 +170,7 @@ variable "hids_sg_name" {
 variable "hids_instances" {
   description = "List of droplet IDs to include in this security group"
   type        = list(string)
-  default     = [""]
+  default     = []
 }
 
 variable "logging_sg_name" {
@@ -182,7 +182,7 @@ variable "logging_sg_name" {
 variable "logging_instances" {
   description = "List of droplet IDs to include in this security group"
   type        = list(string)
-  default     = [""]
+  default     = []
 }
 
 variable "vault_sg_name" {
@@ -194,5 +194,5 @@ variable "vault_sg_name" {
 variable "vault_instances" {
   description = "List of droplet IDs to include in this security group"
   type        = list(string)
-  default     = [""]
+  default     = []
 }
